@@ -1,0 +1,52 @@
+dn: ou=People,dc=eco,dc=system
+
+objectClass: organizationalUnit
+
+ou: People
+
+
+dn: ou=Groups,dc=eco,dc=system
+
+objectClass: organizationalUnit
+
+ou: Groups
+
+
+dn: cn=DEPARTMENT,ou=Groups,dc=eco,dc=system
+
+objectClass: posixGroup
+
+cn: SUBGROUP
+
+gidNumber: 5000
+
+
+dn: uid=USER,ou=People,dc=eco,dc=system
+
+objectClass: inetOrgPerson
+
+objectClass: posixAccount
+
+objectClass: shadowAccount
+
+uid: anandj
+
+sn: Jayarajan
+
+givenName: Anand
+
+cn: Anand Jayarajan
+
+displayName: Anand
+
+uidNumber: 10000
+
+gidNumber: 5000
+
+userPassword: password
+
+gecos: Anand Jayarajan
+
+loginShell: /bin/bash
+
+homeDirectory: /home/anandj
