@@ -32,6 +32,8 @@ RUN sed -i "s/dc=yourdomain,dc=org/dc=$DOMAIN1,dc=$DOMAIN2/g" \
     /var/lib/ldap-account-manager/config/lam.conf
 RUN sed -i "s/dc=my-domain,dc=com/dc=$DOMAIN1,dc=$DOMAIN2/g" \
     /var/lib/ldap-account-manager/config/lam.conf
+RUN sed -i "s/cn=Manager,dc=$DOMAIN1,dc=$DOMAIN2/cn=admin,dc=$DOMAIN1,dc=$DOMAIN2/g" \
+    /var/lib/ldap-account-manager/config/lam.conf
 
 # Configure secure ldap
 #RUN apt install openssh-server -y
@@ -50,7 +52,7 @@ RUN sed -i "s/dc=my-domain,dc=com/dc=$DOMAIN1,dc=$DOMAIN2/g" \
 
 # Configure necessary for replication
 ENV RP_PASS="rpuser"
-ENV RP=1
+ENV RP=0
 ENV MASTER_IP="127.0.0.1"
 ADD rpsetup.sh /root/
 ADD rpmaster.sh /root/
