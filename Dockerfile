@@ -57,6 +57,8 @@ ENV MASTER_IP="127.0.0.1"
 ADD rpsetup.sh /root/
 ADD rpmaster.sh /root/
 ADD rpslave.sh /root/
+ADD backup.sh /root/
+ADD restore.sh /root/
 RUN /root/rpsetup.sh $RP $ADMIN_PASS $DOMAIN1 $DOMAIN2 $RP_PASS $MASTER_IP
 
 EXPOSE 80 389 636
