@@ -1,8 +1,8 @@
 FROM ubuntu:20.04
 
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install vim net-tools debconf-utils iputils-ping nmap telnet -y
+RUN apt update -y
+RUN apt upgrade -y
+RUN apt install vim net-tools debconf-utils iputils-ping nmap telnet -y
 
 ENV ADMIN_PASS="admin"
 ENV DOMAIN1="syslab"
@@ -12,7 +12,7 @@ ENV ORG="ecosystem"
 # Install and configure slapd
 RUN echo "slapd slapd/password1 password $ADMIN_PASS" | debconf-set-selections;\
 echo "slapd slapd/password2 password $ADMIN_PASS" | debconf-set-selections;
-RUN DEBIAN_FRONTEND=noninteractive apt-get install ldap-utils slapd -y
+RUN DEBIAN_FRONTEND=noninteractive apt install ldap-utils slapd -y
 
 RUN echo "slapd slapd/password1 password $ADMIN_PASS" | debconf-set-selections;\
 echo "slapd slapd/password2 password $ADMIN_PASS" | debconf-set-selections;\
@@ -26,7 +26,7 @@ RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure slapd
 # Install LAM
 RUN echo "tzdata tzdata/Areas select America" | debconf-set-selections;\
 echo "tzdata tzdata/Zones/America select Toronto" | debconf-set-selections;
-RUN DEBIAN_FRONTEND=noninteractive apt-get install ldap-account-manager -y
+RUN DEBIAN_FRONTEND=noninteractive apt install ldap-account-manager -y
 
 RUN sed -i "s/dc=yourdomain,dc=org/dc=$DOMAIN1,dc=$DOMAIN2/g" \
     /var/lib/ldap-account-manager/config/lam.conf
@@ -34,7 +34,7 @@ RUN sed -i "s/dc=my-domain,dc=com/dc=$DOMAIN1,dc=$DOMAIN2/g" \
     /var/lib/ldap-account-manager/config/lam.conf
 
 # Configure secure ldap
-#RUN apt-get install openssh-server -y
+#RUN apt install openssh-server -y
 #RUN mkdir -v /etc/ldap/ssl
 #RUN openssl req -newkey rsa:1024 -x509 -nodes \
 #    -out /etc/ldap/ssl/slapd.pem -keyout /etc/ldap/ssl/slapd.pem -days 3650 \
