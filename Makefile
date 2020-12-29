@@ -1,3 +1,5 @@
+.PHONY: setup build run start stop attach backup restore clean
+
 setup:
 	mkdir -p backup
 
