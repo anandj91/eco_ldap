@@ -63,7 +63,7 @@ ADD restore.sh /root/
 ADD startup.sh /root/
 RUN /root/rpsetup.sh $RP $ADMIN_PASS $DOMAIN1 $DOMAIN2 $RP_PASS $MASTER_IP
 
-RUN echo "*/1 *  * * *   root    /root/backup.sh" >> /etc/crontab
+RUN echo "*/15 *  * * *   root    /root/backup.sh" >> /etc/crontab
 
 EXPOSE 80 389 636
 VOLUME /backup

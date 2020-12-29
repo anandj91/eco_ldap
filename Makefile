@@ -17,10 +17,10 @@ attach:
 	docker exec -it ldap_master /bin/bash
 
 backup:
-	docker exec -it ldap_master /root/backup.sh
+	docker exec -it ldap_master /bin/bash -c "/root/backup.sh"
 
 restore:
-	docker exec -it ldap_master /root/restore.sh
+	docker exec -it ldap_master /bin/bash -c "/root/restore.sh"
 
 clean: stop
 	docker rm ldap_master
