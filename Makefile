@@ -24,5 +24,5 @@ backup:
 restore:
 	docker exec -it ldap_master /bin/bash -c "/root/restore.sh"
 
-clean: stop
+clean: backup stop
 	docker rm ldap_master
