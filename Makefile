@@ -1,13 +1,17 @@
+BUILD_ARGS := $(shell cat eco_ldap.conf | xargs -i echo "--build-arg {}")
+
 .PHONY: setup build run start stop attach backup restore clean
 
 setup:
 	mkdir -p backup
 
 build: setup
-	docker build -t ldap_master_image .
+	docker build ${BUILD_ARGS} -t ldap_master_image .
 
 run: build
-	docker run -d --name ldap_master -p 8080:80 -p 389:389 -p 636:636 -v ${PWD}/backup:/backup ldap_master_image
+	docker run -d --name ldap_master \
+		-p 8080:80 -p 389:389 -p 636:636 -v ${PWD}/backup:/backup \
+		ldap_master_image
 
 start:
 	docker start ldap_master

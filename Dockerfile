@@ -5,10 +5,10 @@ RUN apt update -y
 RUN apt upgrade -y
 RUN apt install vim net-tools debconf-utils iputils-ping nmap telnet cron -y
 
-ENV ADMIN_PASS="admin"
-ENV DOMAIN1="syslab"
-ENV DOMAIN2="sandbox"
-ENV ORG="ecosystem"
+ARG ADMIN_PASS
+ARG DOMAIN1
+ARG DOMAIN2
+ARG ORG
 
 # Install and configure slapd
 RUN echo "slapd slapd/password1 password $ADMIN_PASS" | debconf-set-selections;\
@@ -52,9 +52,10 @@ RUN sed -i "s/cn=Manager,dc=$DOMAIN1,dc=$DOMAIN2/cn=admin,dc=$DOMAIN1,dc=$DOMAIN
 #    | tee -a /etc/default/slapd
 
 # Configure necessary for replication
-ENV RP_PASS="rpuser"
-ENV RP=0
-ENV MASTER_IP="127.0.0.1"
+ARG RP_PASS
+ARG RP
+ARG MASTER_IP
+
 ADD rpsetup.sh /root/
 ADD rpmaster.sh /root/
 ADD rpslave.sh /root/
