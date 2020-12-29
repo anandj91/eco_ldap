@@ -1,8 +1,9 @@
 FROM ubuntu:20.04
+MAINTAINER anandj@cs.toronto.edu
 
 RUN apt update -y
 RUN apt upgrade -y
-RUN apt install vim net-tools debconf-utils iputils-ping nmap telnet -y
+RUN apt install vim net-tools debconf-utils iputils-ping nmap telnet cron -y
 
 ENV ADMIN_PASS="admin"
 ENV DOMAIN1="syslab"
@@ -59,7 +60,13 @@ ADD rpmaster.sh /root/
 ADD rpslave.sh /root/
 ADD backup.sh /root/
 ADD restore.sh /root/
+ADD startup.sh /root/
 RUN /root/rpsetup.sh $RP $ADMIN_PASS $DOMAIN1 $DOMAIN2 $RP_PASS $MASTER_IP
+
+RUN echo "*/1 *  * * *   root    /root/backup.sh" >> /etc/crontab
 
 EXPOSE 80 389 636
 VOLUME /backup
+
+CMD ["/root/startup.sh"]
+WORKDIR /root
