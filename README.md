@@ -1,3 +1,4 @@
+
 # EcoSystem LDAP Authentication server
 
 eco_ldap contains a docker setup to create an LDAP-based user authentication server. This include the following:
@@ -19,9 +20,16 @@ Following Makefile targets might be helpful:
  4. `make restore` - Restore the LDAP server from the most recent backed up *.ldif files.
  5. `make clean` - Destroy the LDAP/LAM docker container
 
+Once the server is setup, you can access LAM server through <MASTER_IP>:8080/lam. To change the LAM password, follow https://www.linux.com/news/how-install-ldap-account-manager-ubuntu-server-1804/
+
 ### Configure the client machine
 Set the same configuration parameters in *eco_ldap.conf* used for server setup. Then just run `./client_setup.sh` script.
 
 ## Future work
 
  1. Configure LDAP server with master-slave replication
+
+## References
+https://www.linux.com/topic/desktop/how-install-openldap-ubuntu-server-1804/
+https://www.linux.com/news/how-install-ldap-account-manager-ubuntu-server-1804/
+https://www.linux.com/topic/desktop/how-authenticate-linux-desktop-your-openldap-server/
