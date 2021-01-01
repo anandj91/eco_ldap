@@ -1,4 +1,5 @@
 #!/bin/bash -e
+
 service slapd restart
 service apache2 restart
 cron

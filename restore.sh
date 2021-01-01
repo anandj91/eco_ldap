@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 DIR=$(find /backup/ -name "bck_*" | sort -nr | head -1)
 
 pkill slapd

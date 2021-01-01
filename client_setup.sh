@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 . eco_ldap.conf
 
 export DEBIAN_FRONTEND=noninteractive
