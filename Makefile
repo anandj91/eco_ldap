@@ -6,7 +6,7 @@ setup:
 	mkdir -p backup
 
 build: setup
-	docker build ${BUILD_ARGS} -t ldap_master_image .
+	docker build --network host ${BUILD_ARGS} -t ldap_master_image .
 
 run: build
 	docker run -d --name ldap_master \
