@@ -20,4 +20,4 @@ sudo sed -i "/^group:.*[^p]$/ s/$/ ldap/" /etc/nsswitch.conf
 sudo sed -i "/^shadow:.*[^p]$/ s/$/ ldap/" /etc/nsswitch.conf
 
 sudo sed -i "s/pam_ldap.so use_authtok/pam_ldap.so/" /etc/pam.d/common-password
-echo "session optional pam_mkhomedir.so skel=/etc/skel umask=077" >> /etc/pam.d/common-session
+grep "pam_mkhomedir.so" /etc/pam.d/common-session || echo "session optional pam_mkhomedir.so skel=/etc/skel umask=077" >> /etc/pam.d/common-session
