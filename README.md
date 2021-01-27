@@ -30,6 +30,6 @@ Set the same configuration parameters in *eco_ldap.conf* used for server setup. 
  1. Configure LDAP server with master-slave replication
 
 ## References
-https://www.linux.com/topic/desktop/how-install-openldap-ubuntu-server-1804/
-https://www.linux.com/news/how-install-ldap-account-manager-ubuntu-server-1804/
-https://www.linux.com/topic/desktop/how-authenticate-linux-desktop-your-openldap-server/
+1. https://www.linux.com/topic/desktop/how-install-openldap-ubuntu-server-1804/
+2. https://www.linux.com/news/how-install-ldap-account-manager-ubuntu-server-1804/
+3. https://www.linux.com/topic/desktop/how-authenticate-linux-desktop-your-openldap-server/
